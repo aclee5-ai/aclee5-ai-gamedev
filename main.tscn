@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://dear7whac1f7m"]
+
+[ext_resource type="Texture2D" uid="uid://djvee3ou62ovk" path="res://assets/background/foregound-merged_middleground_0000.png" id="1_h2yge"]
+[ext_resource type="Texture2D" uid="uid://555xks234fqh" path="res://assets/background/foregound-merged_background_0000.png" id="2_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d0dpbkyjj3nu0" path="res://assets/background/foregound-merged_foregound_0000.png" id="3_lquwl"]
+[ext_resource type="Texture2D" uid="uid://cj2uhe276aw6q" path="res://assets/staticdead.png" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://bqsv7o0fes4bn" path="res://player.gd" id="4_lquwl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ep68i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1bvp3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nb2ih"]
+size = Vector2(34, 20)
+
+[node name="Node2D" type="Node2D" unique_id=737507368]
+
+[node name="ForegoundMergedMiddleground0000" type="Sprite2D" parent="." unique_id=1830259528]
+z_index = -10
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("1_h2yge")
+
+[node name="ForegoundMergedBackground0000" type="Sprite2D" parent="." unique_id=1117870414]
+z_index = -20
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_1bvp3")
+
+[node name="ForegoundMergedForegound0000" type="Sprite2D" parent="." unique_id=1623935401]
+z_index = 10
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("3_lquwl")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1424604100]
+script = ExtResource("4_lquwl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=400330027]
+sprite_frames = SubResource("SpriteFrames_ep68i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=672859170]
+shape = SubResource("RectangleShape2D_nb2ih")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=404822098]
+zoom = Vector2(2, 2)

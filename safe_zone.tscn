@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dskdyseaamnl0"]
+
+[ext_resource type="Script" uid="uid://d23yxs2t8sh5x" path="res://safe_zone.gd" id="1_rxcjv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0af4"]
+
+[node name="SafeZone" type="Area2D" unique_id=1554540383]
+script = ExtResource("1_rxcjv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1143385466]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=5902729]
+shape = SubResource("RectangleShape2D_y0af4")
