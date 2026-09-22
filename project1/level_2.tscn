@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://b5o2qn7g5mxod"]
+
+[ext_resource type="PackedScene" uid="uid://bmwfbqy7vin1d" path="res://shrimp.tscn" id="3_7j8ne"]
+[ext_resource type="Script" uid="uid://fhwdocuampc0" path="res://l_1_track.gd" id="4_7dov7"]
+[ext_resource type="PackedScene" uid="uid://bvnqtaoduincl" path="res://predator_1.tscn" id="5_ehv2h"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xdadj"]
+load_path = "res://.godot/imported/foregound-merged_background_0000.png-b672486e7a88d15a0646d74ef99c48e0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1y8me"]
+load_path = "res://.godot/imported/foregound-merged_middleground_0000.png-f0fc979e55824dd2f3c6973641204336.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t2eq"]
+size = Vector2(1070, 53.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffrnq"]
+size = Vector2(49.25, 256)
+
+[sub_resource type="Curve2D" id="Curve2D_5hph3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -221, 12, 0, 0, 0, 0, 713, 12, 0, 0, 0, 0, -221, 12)
+}
+point_count = 3
+
+[node name="level2" type="Node2D" unique_id=2066209025]
+position = Vector2(256, 96)
+
+[node name="back" type="Parallax2D" parent="." unique_id=709534756]
+
+[node name="background" type="Sprite2D" parent="back" unique_id=1593692622]
+texture_filter = 1
+texture = SubResource("CompressedTexture2D_xdadj")
+
+[node name="mid" type="Parallax2D" parent="." unique_id=302370542]
+
+[node name="middle" type="Sprite2D" parent="mid" unique_id=258098572]
+texture_filter = 1
+texture = SubResource("CompressedTexture2D_1y8me")
+
+[node name="front" type="Parallax2D" parent="." unique_id=1257574035]
+
+[node name="forground" type="Sprite2D" parent="front" unique_id=103986956]
+texture_filter = 1
+
+[node name="playa" parent="." unique_id=335778898 instance=ExtResource("3_7j8ne")]
+
+[node name="Top" type="StaticBody2D" parent="." unique_id=1321649584]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top" unique_id=515720764]
+position = Vector2(246, -111)
+shape = SubResource("RectangleShape2D_1t2eq")
+
+[node name="Bottom" type="StaticBody2D" parent="." unique_id=138493352]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom" unique_id=4475830]
+position = Vector2(238, 94)
+shape = SubResource("RectangleShape2D_1t2eq")
+
+[node name="Left" type="StaticBody2D" parent="." unique_id=1836412874]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=1035525085]
+position = Vector2(-271.375, -8)
+shape = SubResource("RectangleShape2D_ffrnq")
+
+[node name="Right" type="StaticBody2D" parent="." unique_id=556949285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=816901005]
+position = Vector2(755, -8)
+shape = SubResource("RectangleShape2D_ffrnq")
+
+[node name="L2_track1" type="Path2D" parent="." unique_id=959405478]
+curve = SubResource("Curve2D_5hph3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="L2_track1" unique_id=499815855]
+position = Vector2(-221, 12)
+rotates = false
+script = ExtResource("4_7dov7")
+swim_speed = 85.0
+
+[node name="Predator" parent="L2_track1/PathFollow2D" unique_id=267247514 instance=ExtResource("5_ehv2h")]

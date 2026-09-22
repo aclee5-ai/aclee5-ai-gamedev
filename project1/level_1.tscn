@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://c1xcerkltkqwb"]
+
+[ext_resource type="Texture2D" uid="uid://c6yu41vwxg8y4" path="res://assets/final_bg/back.png" id="1_5hph3"]
+[ext_resource type="Script" uid="uid://boffdbrckkoy0" path="res://level_1.gd" id="1_5rr72"]
+[ext_resource type="Texture2D" uid="uid://dy2oau602rcdf" path="res://assets/final_bg/mid.png" id="2_j7kpp"]
+[ext_resource type="Texture2D" uid="uid://bp30x4lcjyyry" path="res://assets/final_bg/front3.png" id="3_bjebc"]
+[ext_resource type="PackedScene" uid="uid://bmwfbqy7vin1d" path="res://shrimp.tscn" id="3_hn12h"]
+[ext_resource type="PackedScene" uid="uid://ofe6vjxekvn6" path="res://collectible_item.tscn" id="3_j7kpp"]
+[ext_resource type="PackedScene" uid="uid://bvnqtaoduincl" path="res://predator_1.tscn" id="4_ihfcg"]
+[ext_resource type="Script" uid="uid://fhwdocuampc0" path="res://l_1_track.gd" id="4_rka8t"]
+[ext_resource type="PackedScene" uid="uid://d03s4hqersj2y" path="res://level_exit.tscn" id="6_bjebc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t2eq"]
+size = Vector2(1070, 53.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffrnq"]
+size = Vector2(49.25, 256)
+
+[sub_resource type="Curve2D" id="Curve2D_5hph3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -221, 12, 0, 0, 0, 0, 713, 12, 0, 0, 0, 0, -221, 12)
+}
+point_count = 3
+
+[node name="level1" type="Node2D" unique_id=2066209025]
+position = Vector2(283, 96)
+script = ExtResource("1_5rr72")
+
+[node name="back" type="Parallax2D" parent="." unique_id=709534756]
+
+[node name="background" type="Sprite2D" parent="back" unique_id=1593692622]
+texture_filter = 1
+position = Vector2(229, 0)
+texture = ExtResource("1_5hph3")
+
+[node name="mid" type="Parallax2D" parent="." unique_id=302370542]
+
+[node name="middle" type="Sprite2D" parent="mid" unique_id=258098572]
+texture_filter = 1
+position = Vector2(229, 0)
+texture = ExtResource("2_j7kpp")
+
+[node name="front" type="Parallax2D" parent="." unique_id=1257574035]
+
+[node name="forground" type="Sprite2D" parent="front" unique_id=103986956]
+texture_filter = 1
+position = Vector2(229, 0)
+texture = ExtResource("3_bjebc")
+
+[node name="playa" parent="." unique_id=335778898 instance=ExtResource("3_hn12h")]
+position = Vector2(-224, 49)
+
+[node name="Top" type="StaticBody2D" parent="." unique_id=1321649584]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top" unique_id=515720764]
+position = Vector2(232, -118.5)
+shape = SubResource("RectangleShape2D_1t2eq")
+
+[node name="bottom" type="StaticBody2D" parent="." unique_id=15789068]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom" unique_id=582118304]
+position = Vector2(232, 97.5)
+shape = SubResource("RectangleShape2D_1t2eq")
+
+[node name="Left" type="StaticBody2D" parent="." unique_id=1836412874]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=1035525085]
+position = Vector2(-303.375, -7)
+shape = SubResource("RectangleShape2D_ffrnq")
+
+[node name="Right" type="StaticBody2D" parent="." unique_id=556949285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=816901005]
+position = Vector2(762, -5)
+shape = SubResource("RectangleShape2D_ffrnq")
+
+[node name="L1_track" type="Path2D" parent="." unique_id=959405478]
+curve = SubResource("Curve2D_5hph3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="L1_track" unique_id=499815855]
+position = Vector2(-221, 12)
+rotates = false
+script = ExtResource("4_rka8t")
+swim_speed = 85.0
+
+[node name="Predator" parent="L1_track/PathFollow2D" unique_id=267247514 instance=ExtResource("4_ihfcg")]
+
+[node name="toplayer" type="StaticBody2D" parent="." unique_id=1831846170]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="toplayer" unique_id=1031389893]
+position = Vector2(-1, 1)
+build_mode = 1
+polygon = PackedVector2Array(-286, 62, -224, 61, -213, 57, -201, 64, -193, 63, -202, 54, -189, 51, -185, 46, -194, 42, -198, 38, -194, 31, -158, 31, -156, 40, -146, 41, -147, 47, -158, 55, -150, 63, -138, 58, -122, 62, -116, 55, -108, 53, -92, 64, -75, 64, -47, 70, -37, 67, -33, 68, -28, 65, -19, 64, -5, 58, -1, 59, 15, 54, 16, 15, 21, 10, 21, -2, 30, -2, 31, 10, 36, 16, 36, 29, 36, 55, 58, 61, 85, 53, 102, 59, 105, 55, 120, 60, 136, 60, 148, 56, 160, 57, 172, 54, 179, 26, 186, 17, 192, 14, 212, 27, 216, 38, 225, 45, 225, 60, 230, 64, 240, 63, 252, 58, 256, 57, 262, 62, 293, 62, 298, 60, 303, 61, 312, 64, 366, 60, 368, 58, 374, 57, 374, 59, 383, 59, 385, 62, 391, 61, 393, 56, 405, 53, 423, 65, 432, 62, 445, 67, 458, 67, 457, 60, 452, 24, 464, 19, 470, 19, 472, 28, 482, 64, 492, 64, 525, 54, 534, 58, 551, 55, 573, 61, 597, 53, 614, 59, 616, 55, 632, 60, 649, 60, 661, 56, 672, 57, 678, 55, 711, 54, 740, 57)
+
+[node name="Collectibles" type="Node2D" parent="." unique_id=1999907167]
+
+[node name="CollectibleItem" parent="Collectibles" unique_id=2061755613 instance=ExtResource("3_j7kpp")]
+position = Vector2(-137, 48)
+
+[node name="CollectibleItem2" parent="Collectibles" unique_id=1918864270 instance=ExtResource("3_j7kpp")]
+position = Vector2(-17, 40)
+
+[node name="CollectibleItem3" parent="Collectibles" unique_id=261895648 instance=ExtResource("3_j7kpp")]
+position = Vector2(25, -10)
+
+[node name="CollectibleItem4" parent="Collectibles" unique_id=121930709 instance=ExtResource("3_j7kpp")]
+position = Vector2(-100, 25)
+
+[node name="LevelExit" parent="." unique_id=682557567 instance=ExtResource("6_bjebc")]
+visibility_layer = 3
+position = Vector2(728, 33)
