@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bvnqtaoduincl"]
+
+[ext_resource type="Script" uid="uid://d2cvxogmen673" path="res://script/predator_1.gd" id="1_sf3ab"]
+[ext_resource type="Texture2D" uid="uid://87wdbq72mewn" path="res://assets/bunny.png" id="1_x1hrj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t2eq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_x1hrj")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0af4"]
+radius = 9.0
+
+[node name="Predator" type="CharacterBody2D" unique_id=267247514]
+script = ExtResource("1_sf3ab")
+
+[node name="Predator" type="AnimatedSprite2D" parent="." unique_id=142817841]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1t2eq")
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=373697792]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1083373755]
+shape = SubResource("CircleShape2D_y0af4")

@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://cn0tcodafn2d3"]
+
+[ext_resource type="Script" uid="uid://bimkx2b6hlc0e" path="res://script/level_3.gd" id="1_tvhc2"]
+[ext_resource type="Texture2D" uid="uid://c6yu41vwxg8y4" path="res://assets/final_bg/back.png" id="2_bnhad"]
+[ext_resource type="PackedScene" uid="uid://bmwfbqy7vin1d" path="res://scene/shrimp.tscn" id="3_d2622"]
+
+[node name="Node2D" type="Node2D" unique_id=1557755601]
+script = ExtResource("1_tvhc2")
+
+[node name="back" type="Parallax2D" parent="." unique_id=967009227]
+
+[node name="Sprite2D" type="Sprite2D" parent="back" unique_id=898355781]
+position = Vector2(512, 96)
+texture = ExtResource("2_bnhad")
+
+[node name="mid" type="Parallax2D" parent="." unique_id=297020215]
+
+[node name="Sprite2D" type="Sprite2D" parent="mid" unique_id=1462424305]
+
+[node name="front" type="Parallax2D" parent="." unique_id=398414248]
+
+[node name="Sprite2D" type="Sprite2D" parent="front" unique_id=2040683555]
+
+[node name="playa" parent="." unique_id=335778898 instance=ExtResource("3_d2622")]
+position = Vector2(19, 101)
+
+[node name="top" type="StaticBody2D" parent="." unique_id=729695720]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="top" unique_id=1127800223]
+
+[node name="left" type="StaticBody2D" parent="." unique_id=1770116280]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left" unique_id=1010852048]
+
+[node name="right" type="StaticBody2D" parent="." unique_id=19608409]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right" unique_id=1619107521]
+
+[node name="bottom" type="StaticBody2D" parent="." unique_id=1333760866]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom" unique_id=1125584622]

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://d03s4hqersj2y"]
+
+[ext_resource type="Script" uid="uid://c2gbdaxg2ftrs" path="res://script/level_exit.gd" id="1_x1vwn"]
+[ext_resource type="Texture2D" uid="uid://c4yglstuuvrkh" path="res://assets/portal/pixil-frame-0.png" id="1_xr00d"]
+[ext_resource type="Texture2D" uid="uid://c0n3vgot621de" path="res://assets/portal/pixil-frame-1.png" id="2_x1vwn"]
+[ext_resource type="Texture2D" uid="uid://vvg1gu7n3l6g" path="res://assets/portal/pixil-frame-2.png" id="3_oxt44"]
+[ext_resource type="Texture2D" uid="uid://i3ma4a5acy27" path="res://assets/portal/pixil-frame-3.png" id="4_c5ft4"]
+[ext_resource type="Texture2D" uid="uid://b5tadf2ooxkcp" path="res://assets/portal/pixil-frame-4.png" id="5_8vuy8"]
+[ext_resource type="Texture2D" uid="uid://bbxwlsvi3yvlr" path="res://assets/portal/pixil-frame-5.png" id="6_ijqem"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y0af4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xr00d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_x1vwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oxt44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_c5ft4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_8vuy8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ijqem")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ffrnq"]
+radius = 4.0
+height = 18.0
+
+[node name="Area2D" type="Area2D" unique_id=682557567]
+script = ExtResource("1_x1vwn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1684921890]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_y0af4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=849217176]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_ffrnq")

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://ofe6vjxekvn6"]
+
+[ext_resource type="Script" uid="uid://b7i3erb38qxo6" path="res://script/collectible_item.gd" id="1_sh2v4"]
+[ext_resource type="Texture2D" uid="uid://cusj8yf06raxr" path="res://assets/pearl.png" id="2_b5ob8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bjebc"]
+radius = 6.0
+
+[node name="CollectibleItem" type="Area2D" unique_id=1918864270]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_sh2v4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=491143958]
+texture = ExtResource("2_b5ob8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=612690647]
+shape = SubResource("CircleShape2D_bjebc")
