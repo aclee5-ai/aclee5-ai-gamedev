@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dear7whac1f7m"]
+
+[ext_resource type="Script" uid="uid://c45ltrdx3lpqw" path="res://script/title.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://be6opolp227n8" path="res://assets/win.png" id="2_v0l8b"]
+
+[node name="Control" type="Control" unique_id=397093288]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_1bvp3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1192705921]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer" unique_id=553389085]
+texture_filter = 1
+offset_left = -756.0
+offset_top = -55.0
+offset_right = 12.0
+offset_bottom = 137.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_v0l8b")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=2063973616]
+offset_left = 85.0
+offset_right = 431.0
+offset_bottom = 139.0
+theme_override_colors/font_color = Color(0.75390625, 0.04711914, 0.04711914, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/shadow_outline_size = 3
+theme_override_font_sizes/font_size = 36
+text = "ONE KRILLION DOUBLOONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="CanvasLayer" unique_id=73927319]
+offset_left = 72.0
+offset_top = -1.0
+offset_right = 452.0
+offset_bottom = 310.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 13
+text = "Follow the pearls. Gather them all, and the tide will open the way to 1 Krillion Doubloons."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="CanvasLayer" unique_id=2104859728]
+offset_left = 215.0
+offset_top = 185.0
+offset_right = 376.0
+offset_bottom = 208.0
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 8
+text = "Press 'Enter' to start."
