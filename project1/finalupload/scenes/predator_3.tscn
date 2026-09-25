@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c7niogi8ntyyu"]
+
+[ext_resource type="Script" uid="uid://bnny6pe1be1xx" path="res://script/predator_3.gd" id="1_o78ov"]
+[ext_resource type="Texture2D" uid="uid://bxq3j0ole1n4j" path="res://assets/shark_Layer2.png" id="3_sfqjb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1t2eq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_sfqjb")
+}],
+"loop": 1,
+"name": &"swim",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y0af4"]
+size = Vector2(83, 19)
+
+[node name="Predator3" type="CharacterBody2D" unique_id=13268207]
+script = ExtResource("1_o78ov")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1892643933]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1t2eq")
+animation = &"swim"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=776222258]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1761341730]
+position = Vector2(-1.5, 1.5)
+shape = SubResource("RectangleShape2D_y0af4")

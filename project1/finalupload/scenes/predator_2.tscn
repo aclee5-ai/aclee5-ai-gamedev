@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://dhysf56knuv7e"]
+
+[ext_resource type="Script" uid="uid://vr1sgw68705k" path="res://script/predator_2.gd" id="1_smkvq"]
+[ext_resource type="Texture2D" uid="uid://wi7dka7chjfd" path="res://assets/jelly.png" id="2_1g48o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5t7q2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_1g48o")
+}],
+"loop": 1,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y2wqx"]
+height = 48.0
+
+[node name="Predator" type="CharacterBody2D" unique_id=570144085]
+script = ExtResource("1_smkvq")
+
+[node name="Predator" type="AnimatedSprite2D" parent="." unique_id=1074664239]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_5t7q2")
+animation = &"new_animation"
+
+[node name="Hitbox" type="Area2D" parent="." unique_id=614026487]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1119359153]
+texture_filter = 1
+shape = SubResource("CapsuleShape2D_y2wqx")

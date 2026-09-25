@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://c1xcerkltkqwb"]
+
+[ext_resource type="Script" uid="uid://boffdbrckkoy0" path="res://script/level_1.gd" id="1_c1764"]
+[ext_resource type="Texture2D" uid="uid://cu57y2jaumnu3" path="res://assets/bgs_background.png" id="2_c1764"]
+[ext_resource type="Texture2D" uid="uid://ckk2w1xus8ifu" path="res://assets/bgs_middle.png" id="3_ri5j0"]
+[ext_resource type="Texture2D" uid="uid://ifm2papih6jt" path="res://assets/bgs_lvl1.png" id="4_1gcq6"]
+[ext_resource type="PackedScene" uid="uid://bmwfbqy7vin1d" path="res://scene/shrimp.tscn" id="5_i3j6g"]
+[ext_resource type="Script" uid="uid://fhwdocuampc0" path="res://script/l_1_track.gd" id="6_tlh70"]
+[ext_resource type="PackedScene" uid="uid://bvnqtaoduincl" path="res://scene/predator_1.tscn" id="7_hs4ge"]
+[ext_resource type="PackedScene" uid="uid://ofe6vjxekvn6" path="res://scene/collectible_item.tscn" id="8_hidkv"]
+[ext_resource type="PackedScene" uid="uid://d03s4hqersj2y" path="res://scene/level_exit.tscn" id="9_3m3n6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t2eq"]
+size = Vector2(2537, 53.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ffrnq"]
+size = Vector2(49.25, 256)
+
+[sub_resource type="Curve2D" id="Curve2D_5hph3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -221, 12, 0, 0, 0, 0, 337, 12, 0, 0, 0, 0, -221, 12)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_c1764"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 508, 11, 0, 0, 0, 0, 1144, 11, 0, 0, 0, 0, 508, 11)
+}
+point_count = 3
+
+[sub_resource type="Curve2D" id="Curve2D_ri5j0"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1237, 12, 0, 0, 0, 0, 2018, 12, 0, 0, 0, 0, 1237, 12)
+}
+point_count = 3
+
+[node name="level1" type="Node2D" unique_id=2066209025]
+position = Vector2(283, 96)
+script = ExtResource("1_c1764")
+
+[node name="back" type="Parallax2D" parent="." unique_id=709534756]
+
+[node name="background" type="Sprite2D" parent="back" unique_id=1593692622]
+texture_filter = 1
+position = Vector2(967, 0)
+texture = ExtResource("2_c1764")
+
+[node name="mid" type="Parallax2D" parent="." unique_id=302370542]
+
+[node name="middle" type="Sprite2D" parent="mid" unique_id=258098572]
+texture_filter = 1
+position = Vector2(967, 0)
+texture = ExtResource("3_ri5j0")
+
+[node name="front" type="Parallax2D" parent="." unique_id=1257574035]
+
+[node name="forground" type="Sprite2D" parent="front" unique_id=103986956]
+texture_filter = 1
+position = Vector2(967, 0)
+texture = ExtResource("4_1gcq6")
+
+[node name="playa" parent="." unique_id=335778898 instance=ExtResource("5_i3j6g")]
+position = Vector2(-224, 49)
+
+[node name="Top" type="StaticBody2D" parent="." unique_id=1321649584]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top" unique_id=515720764]
+position = Vector2(971.5, -115)
+shape = SubResource("RectangleShape2D_1t2eq")
+
+[node name="bottom" type="StaticBody2D" parent="." unique_id=15789068]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bottom" unique_id=582118304]
+position = Vector2(960, 107)
+shape = SubResource("RectangleShape2D_1t2eq")
+
+[node name="Left" type="StaticBody2D" parent="." unique_id=1836412874]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left" unique_id=1035525085]
+position = Vector2(-303.375, -7)
+shape = SubResource("RectangleShape2D_ffrnq")
+
+[node name="Right" type="StaticBody2D" parent="." unique_id=556949285]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right" unique_id=816901005]
+position = Vector2(2232, -2)
+shape = SubResource("RectangleShape2D_ffrnq")
+
+[node name="L1_track" type="Path2D" parent="." unique_id=959405478]
+curve = SubResource("Curve2D_5hph3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="L1_track" unique_id=499815855]
+position = Vector2(-221, 12)
+rotates = false
+script = ExtResource("6_tlh70")
+
+[node name="Predator" parent="L1_track/PathFollow2D" unique_id=267247514 instance=ExtResource("7_hs4ge")]
+
+[node name="toplayer" type="StaticBody2D" parent="." unique_id=1831846170]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="toplayer" unique_id=703829572]
+polygon = PackedVector2Array(-285, 64, -260, 57, -244, 63, -218, 63, -215, 59, -206, 63, -200, 52, -192, 52, -197, 38, -194, 30, -157, 31, -158, 57, -149, 62, -137, 57, -122, 61, -111, 52, -92, 64, -74, 62, -70, 67, -30, 67, 12, 54, 15, 15, 21, 10, 21, -1, 30, -2, 31, 10, 36, 16, 36, 55, 54, 61, 60, 61, 86, 52, 102, 59, 105, 55, 120, 60, 137, 60, 166, 54, 179, 40, 178, 25, 186, 17, 206, 23, 212, 28, 215, 38, 225, 45, 225, 59, 229, 64, 256, 57, 263, 62, 294, 63, 297, 60, 312, 64, 405, 53, 423, 65, 438, 62, 445, 68, 459, 68, 452, 24, 470, 19, 482, 65, 491, 65, 524, 54, 533, 58, 547, 55, 552, 55, 566, 61, 598, 52, 614, 59, 616, 55, 632, 60, 649, 60, 658, 56, 666, 56, 674, 63, 692, 63, 698, 57, 704, 19, 722, 24, 715, 68, 731, 69, 736, 63, 757, 63, 771, 52, 785, 62, 804, 62, 815, 57, 821, 62, 853, 62, 857, 59, 869, 66, 876, 30, 913, 30, 913, 58, 922, 62, 934, 57, 949, 61, 952, 55, 964, 52, 979, 64, 1037, 68, 1084, 54, 1085, 16, 1093, 11, 1092, -1, 1097, -3, 1102, 1, 1103, 12, 1107, 16, 1106, 54, 1130, 61, 1157, 52, 1171, 59, 1180, 55, 1191, 60, 1243, 54, 1257, 15, 1267, 15, 1267, 23, 1277, 23, 1284, 28, 1295, 45, 1296, 59, 1301, 64, 1327, 57, 1333, 63, 1363, 63, 1367, 60, 1455, 59, 1459, 61, 1472, 53, 1494, 66, 1508, 62, 1513, 66, 1533, 59, 1523, 24, 1540, 19, 1548, 57, 1554, 63, 1564, 64, 1597, 54, 1603, 58, 1623, 55, 1642, 61, 1669, 52, 1685, 59, 1689, 55, 1703, 60, 1718, 60, 1729, 56, 1789, 53, 1825, 62, 1843, 60, 1842, 47, 1851, 43, 1854, 30, 1860, 24, 1871, 24, 1873, 16, 1883, 19, 1893, 54, 1946, 61, 1961, 56, 1964, 60, 1979, 54, 1979, 63, 2028, 61, 2036, 56, 2040, 26, 2060, 24, 2051, 59, 2069, 68, 2075, 62, 2094, 63, 2108, 47, 2124, 46, 2124, 29, 2123, 7, 2137, 1, 2136, -59, 2176, -59, 2182, -38, 2230, 33, 2226, 89, -283, 90)
+
+[node name="Collectibles" type="Node2D" parent="." unique_id=1999907167]
+
+[node name="CollectibleItem" parent="Collectibles" unique_id=2061755613 instance=ExtResource("8_hidkv")]
+position = Vector2(-122, 39)
+
+[node name="CollectibleItem2" parent="Collectibles" unique_id=1918864270 instance=ExtResource("8_hidkv")]
+position = Vector2(897, 4)
+
+[node name="CollectibleItem3" parent="Collectibles" unique_id=261895648 instance=ExtResource("8_hidkv")]
+position = Vector2(180, -17)
+
+[node name="CollectibleItem4" parent="Collectibles" unique_id=121930709 instance=ExtResource("8_hidkv")]
+position = Vector2(535, 49)
+
+[node name="CollectibleItem5" parent="Collectibles" unique_id=824159000 instance=ExtResource("8_hidkv")]
+position = Vector2(1683, 50)
+
+[node name="CollectibleItem6" parent="Collectibles" unique_id=1522150296 instance=ExtResource("8_hidkv")]
+position = Vector2(1100, -29)
+
+[node name="CollectibleItem7" parent="Collectibles" unique_id=1861103322 instance=ExtResource("8_hidkv")]
+position = Vector2(2128, -21)
+
+[node name="CollectibleItem8" parent="Collectibles" unique_id=1115512271 instance=ExtResource("8_hidkv")]
+position = Vector2(1304, 56)
+
+[node name="CollectibleItem9" parent="Collectibles" unique_id=1794464995 instance=ExtResource("8_hidkv")]
+position = Vector2(1527, -7)
+
+[node name="CollectibleItem10" parent="Collectibles" unique_id=1135119390 instance=ExtResource("8_hidkv")]
+position = Vector2(1872, -4)
+
+[node name="LevelExit" parent="." unique_id=682557567 instance=ExtResource("9_3m3n6")]
+visibility_layer = 3
+position = Vector2(2115, 32)
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1955633602]
+curve = SubResource("Curve2D_c1764")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=1091541792]
+position = Vector2(508, 11)
+rotates = false
+script = ExtResource("6_tlh70")
+
+[node name="Predator" parent="Path2D/PathFollow2D" unique_id=2085984351 instance=ExtResource("7_hs4ge")]
+
+[node name="Path2D2" type="Path2D" parent="." unique_id=46511844]
+curve = SubResource("Curve2D_ri5j0")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" unique_id=392571738]
+position = Vector2(1237, 12)
+rotates = false
+script = ExtResource("6_tlh70")
+
+[node name="Predator" parent="Path2D2/PathFollow2D" unique_id=163532280 instance=ExtResource("7_hs4ge")]

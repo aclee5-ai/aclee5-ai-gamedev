@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://bmwfbqy7vin1d"]
+
+[ext_resource type="Script" uid="uid://bqsv7o0fes4bn" path="res://script/player.gd" id="1_umfgr"]
+[ext_resource type="Texture2D" uid="uid://bfwplcvembt26" path="res://assets/shrimpleft.png" id="2_on7xp"]
+[ext_resource type="AudioStream" uid="uid://c3p26go5g04i2" path="res://audio/JumpSound.mp3" id="3_2beck"]
+[ext_resource type="Texture2D" uid="uid://x3j1jfe2sbrm" path="res://assets/shrimpLeft/pixil-frame-0.png" id="3_bhpb8"]
+[ext_resource type="Texture2D" uid="uid://dx74p1648yfaj" path="res://assets/shrimpLeft/pixil-frame-1.png" id="4_ceko8"]
+[ext_resource type="AudioStream" uid="uid://bec17c6cjlint" path="res://audio/DeathSound.mp3" id="4_jl16e"]
+[ext_resource type="Texture2D" uid="uid://cnryt8wi2t0u0" path="res://assets/shrimpRight/pixil-frame-0.png" id="5_vn7i5"]
+[ext_resource type="Texture2D" uid="uid://bmjhmh533ed5d" path="res://assets/shrimpRight/pixil-frame-1.png" id="6_da42d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nursr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_on7xp")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bhpb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ceko8")
+}],
+"loop": 1,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vn7i5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_da42d")
+}],
+"loop": 1,
+"name": &"right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tgus"]
+size = Vector2(14, 10)
+
+[node name="Node2D" type="Node2D" unique_id=335778898]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1841860172]
+texture_filter = 1
+script = ExtResource("1_umfgr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player" unique_id=1465083422]
+physics_interpolation_mode = 1
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_nursr")
+animation = &"left"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1465851186]
+shape = SubResource("RectangleShape2D_4tgus")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=37237322]
+zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 2500
+limit_bottom = 192
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="Player" unique_id=1739753536]
+stream = ExtResource("3_2beck")
+
+[node name="DeathSound" type="AudioStreamPlayer2D" parent="Player" unique_id=552486344]
+stream = ExtResource("4_jl16e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player" unique_id=625440930]
+
+[node name="GameOverUI" type="Label" parent="Player/CanvasLayer" unique_id=469407065]
+visible = false
+offset_right = 512.0
+offset_bottom = 149.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "YOU LOSE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverUI2" type="Label" parent="Player/CanvasLayer" unique_id=1658742855]
+visible = false
+offset_top = 24.0
+offset_right = 512.0
+offset_bottom = 190.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.34117648)
+theme_override_font_sizes/font_size = 12
+text = "Press ENTER to play again."
+horizontal_alignment = 1
+vertical_alignment = 1

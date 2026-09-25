@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://b45ibo46vhbcn"]
+
+[ext_resource type="Script" uid="uid://biq4mjihsh0bk" path="res://script/winscreen.gd" id="1_fj7iy"]
+[ext_resource type="Texture2D" uid="uid://be6opolp227n8" path="res://assets/win.png" id="2_82lut"]
+[ext_resource type="Texture2D" uid="uid://drmnthh7rosce" path="res://assets/pixil-frame-0.png" id="3_c1wfa"]
+[ext_resource type="AudioStream" uid="uid://csix2eb384gk5" path="res://audio/congratulations.mp3" id="4_82lut"]
+
+[node name="Winscreen" type="Node2D" unique_id=1130064189]
+script = ExtResource("1_fj7iy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=331442834]
+texture_filter = 1
+position = Vector2(27, 108)
+scale = Vector2(3, 3)
+texture = ExtResource("2_82lut")
+
+[node name="Label" type="Label" parent="." unique_id=611072975]
+offset_left = -1.0
+offset_right = 514.0
+offset_bottom = 183.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 26
+text = "VICTORY! 
+YOU FOUND THE TREASURE!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="." unique_id=1274732209]
+offset_top = 68.0
+offset_right = 511.0
+offset_bottom = 227.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Play again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=325197963]
+texture_filter = 1
+position = Vector2(261, 219)
+scale = Vector2(3, 3)
+texture = ExtResource("3_c1wfa")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2013475848]
+stream = ExtResource("4_82lut")
+volume_db = 8.154
+autoplay = true
